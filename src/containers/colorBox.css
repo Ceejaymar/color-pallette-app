@@ -5,4 +5,53 @@
   display: inline-block;
   position: relative;
   cursor: pointer;
+  margin-bottom: -3.5px;
+}
+
+.color-box__copy-btn {
+  width: 100px;
+  height: 30px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -15px;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, .3);
+  font-size: 1rem;
+  color: white;
+  text-transform: uppercase;
+  border: none;
+  opacity: 0;
+}
+
+.color-box:hover .color-box__copy-btn {
+  opacity: 1;
+  transition: .5s;
+}
+
+.color-box__content {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  padding: 10px;
+  color: black;
+  letter-spacing: 1px;
+}
+
+.color-box__see-more {
+  background-color: rgba(255, 255, 255, .3);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  text-transform: capitalize;
 }

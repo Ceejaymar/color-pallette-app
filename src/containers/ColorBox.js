@@ -7,8 +7,13 @@ class ColorBox extends Component {
 
     return (
       <div className="color-box" style={{ backgroundColor: background }}>
-        <span>{name}</span>
-        {/* <span>More</span> */}
+        <div className="color-box__copy-box">
+          <div className="color-box__content">
+            <span className="color-box__name">{ name }</span>
+          </div>
+          <button className="color-box__copy-btn">Copy</button>
+        </div>
+        <span className="color-box__see-more">More colors</span>
       </div>
     );
   }
