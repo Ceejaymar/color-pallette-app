@@ -7,8 +7,8 @@ class Palette extends Component {
     super(props);
     
     this.state = {
-
-    }
+      
+    };
   }
   
   render() {
