@@ -28,6 +28,7 @@ class Palette extends Component {
 
     return (
       <div className="palette">
+      <div className="palette__slider">
         <Slider
           defaultValue={colorLevel}
           min={100}
@@ -35,6 +36,7 @@ class Palette extends Component {
           onAfterChange={this.handleLevelChange}
           step={100}
         />
+      </div>
         <div className="palette__colors">
           {colorBoxes}
         </div>

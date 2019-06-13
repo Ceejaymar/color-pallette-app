@@ -11,7 +11,7 @@ const generatePalette = (starterPalette) => {
   };
 
   levels.forEach(level => {
-    newPalette.colors[level] = [7];
+    newPalette.colors[level] = [];
   });
 
   starterPalette.colors.forEach(color => {

@@ -5,3 +5,30 @@
 .palette__colors {
   height: 90%;
 }
+
+.palette__slider {
+  width: 340px;
+  margin: 5px 10px;
+  display: inline-block;
+}
+
+.rc-slider-track {
+  background-color: transparent;
+}
+
+.rc-slider-rail {
+  height: 10px;
+}
+
+.rc-slider-handle,
+.rc-slider-handle:active,
+.rc-slider-handle:focus,
+.rc-slider-handle:hover {
+  background-color: mediumseagreen;
+  outline: none;
+  border: 2px solid mediumseagreen;
+  box-shadow: none;
+  height: 15px;
+  width: 15px;
+  margin-top: -2.75px;
+}
