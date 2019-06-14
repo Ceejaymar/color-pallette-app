@@ -49,5 +49,6 @@
 }
 
 .navbar__select {
-  float: right;
+  margin-left: auto;
+  margin-right: 15px;
 }
