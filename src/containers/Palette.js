@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
 import Navbar from './Navbar';
 import ColorBox from './ColorBox';
 import './palette.css';
@@ -23,11 +22,11 @@ class Palette extends Component {
   }
 
   render() {
-    const { colors } = this.props.palette;
+    const { colors, paletteName, emoji } = this.props.palette;
     const { colorLevel, format } = this.state;
 
     const colorBoxes = colors[colorLevel].map(color => (
-      <ColorBox background={color[format]} name={color.name} key={uuid()} />
+      <ColorBox background={color[format]} name={color.name} key={color.id} />
     ))
 
     return (
@@ -39,6 +38,10 @@ class Palette extends Component {
         <div className='palette__colors'>
           {colorBoxes}
         </div>
+        <footer className="palette__footer">
+          {paletteName} 
+          <span className="palette__emoji">{emoji}</span>
+        </footer>
       </div>
     );
   }

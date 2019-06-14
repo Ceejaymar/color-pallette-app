@@ -1,7 +1,21 @@
 .palette {
-  height: 100vh;
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .palette__colors {
   height: 90%;
+}
+
+.palette__footer {
+  height: 5vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: 500;
+}
+
+.palette__emoji {
+  padding: 0 10px;
 }
