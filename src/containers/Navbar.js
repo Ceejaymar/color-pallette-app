@@ -29,13 +29,13 @@ class Navbar extends Component {
     const { format, isOpen } = this.state;
 
     return (
-      <nav className="navbar">
-        <div className="navbar__logo">
-          <Link to='/' className="navbar__brand">Color picker</Link>
+      <nav className='navbar'>
+        <div className='navbar__logo'>
+          <Link to='/' className='navbar__brand'>Color picker</Link>
         </div>
-        <div className="navbar__slider-container">
-        <span className="navbar__slider-level">Level: {colorLevel}</span>
-          <div className="navbar__slider">
+        <div className='navbar__slider-container'>
+        <span className='navbar__slider-level'>Level: {colorLevel}</span>
+          <div className='navbar__slider'>
             <Slider
               defaultValue={colorLevel}
               min={100}
@@ -45,12 +45,12 @@ class Navbar extends Component {
             />
           </div>
         </div>
-        <div className="navbar__select">
+        <div className='navbar__select'>
           <Select onChange={this.handleFormatChange} value={format}>
-            <MenuItem value="hex">Hex - #ffffff</MenuItem>
-            <MenuItem value="rgb">RGB - rgb(255, 255, 255)</MenuItem>
-            <MenuItem value="rgba">RGBa rgba(255, 255, 255, 1.0)</MenuItem>
-            <MenuItem value="hsl">HSL - hsl(0, 0%, 100%)</MenuItem>
+            <MenuItem value='hex'>Hex - #ffffff</MenuItem>
+            <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>
+            <MenuItem value='rgba'>RGBa rgba(255, 255, 255, 1.0)</MenuItem>
+            <MenuItem value='hsl'>HSL - hsl(0, 0%, 100%)</MenuItem>
           </Select>
         </div>
         <SnackBar 
@@ -62,9 +62,9 @@ class Navbar extends Component {
           onClose={this.handleButton}
           action={[
             <IconButton 
-              key="close" 
+              key='close'
               aria-label='close'
-              color="inherit"
+              color='inherit'
               onClick={this.handleButton}
             >
               <CloseIcon />
