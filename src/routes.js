@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import seedColors from './seed-colors';
+import PaletteBoard from './containers/PaletteBoard';
 import Palette from './containers/Palette';
+import seedColors from './seed-colors';
 import { generatePalette } from './colorHelper';
 
 class Routes extends Component {
@@ -15,6 +16,7 @@ class Routes extends Component {
     return (
       <BrowserRouter>
         <Switch>
+          <Route exact path='/' render={() => <PaletteBoard palettes={seedColors} />} />
           <Route
             exact path='/palette/:id'
             render={routeProps => (
