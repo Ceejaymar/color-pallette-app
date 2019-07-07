@@ -17,16 +17,23 @@ class Routes extends Component {
       <BrowserRouter>
         <Switch>
           <Route
-            exact path='/'
+            exact
+            path='/'
             render={routeProps => (
               <PaletteBoard palettes={seedColors} {...routeProps} />
             )}
           />
           <Route
-            exact path='/palette/:id'
+            exact
+            path='/palette/:paletteId'
             render={routeProps => (
-              <Palette palette={generatePalette(this.findPalette(routeProps.match.params.id))} />
+              <Palette palette={generatePalette(this.findPalette(routeProps.match.params.paletteId))} />
             )}
+          />
+          <Route
+            exact
+            path='/palette/:paletteId/:colorId'
+            render={() => <h1>Single color page!</h1>}
           />
         </Switch>
       </BrowserRouter>
