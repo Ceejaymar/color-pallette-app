@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/styles';
 
 const styles = {
   root: {
-    border: '1px solid black',
+    // border: '1px solid black',
     backgroundColor: 'white',
     borderRadius: '5px',
     padding: "0.5rem",
@@ -43,7 +43,7 @@ const styles = {
   }
 }
 
-const MiniPalette = ({ classes, colors, id, emoji, paletteName }) => {
+const MiniPalette = ({ classes, colors, id, emoji, paletteName, handleGoToPalette }) => {
   const { root, colorList, title, emojiIcon, miniColor } = classes;
   const miniColorBoxes = colors.map(color => (
     <div 
@@ -54,7 +54,7 @@ const MiniPalette = ({ classes, colors, id, emoji, paletteName }) => {
   ))
   
   return (
-    <div className={root}>
+    <div className={root} onClick={handleGoToPalette}>
       <div className={colorList}>
         { miniColorBoxes }
       </div>
