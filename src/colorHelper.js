@@ -45,4 +45,4 @@ const generateScale = (hexColor, numOfColors) => {
     .scale(getRange(hexColor)).mode('lab').colors(numOfColors);
 }
 
-export { generatePalette }; 
+export { generatePalette };
