@@ -8,7 +8,16 @@
   margin-bottom: -3.5px;
 }
 
-.color-box__copy-btn {
+.palette--single .color-box {
+  height: 50%;
+}
+
+.color-box.palette__go-back {
+  background-color: black;
+}
+
+.color-box__copy-btn,
+.back-button {
   width: 100px;
   height: 30px;
   display: inline-block;
@@ -24,7 +33,17 @@
   font-size: 1rem;
   color: white;
   text-transform: uppercase;
+  text-decoration: none;
   border: none;
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-box__copy-btn {
   opacity: 0;
 }
 
