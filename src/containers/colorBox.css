@@ -62,6 +62,11 @@
   letter-spacing: 1px;
 }
 
+.color-box__light-text {
+  color: white;
+}
+
+
 .color-box__see-more {
   background-color: rgba(255, 255, 255, .3);
   position: absolute;
@@ -75,6 +80,9 @@
   text-transform: capitalize;
 }
 
+.color-box__dark-text {
+  color: rgba(0, 0, 0, 0.8);
+}
 .color-box__copy-overlay {
   opacity: 0;
   transform: scale(0.1);
