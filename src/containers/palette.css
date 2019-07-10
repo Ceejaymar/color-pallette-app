@@ -1,12 +1,12 @@
-.palette {
+/* .palette {
   height: 98vh;
   display: flex;
   flex-direction: column;
-}
+} */
 
-.palette__colors {
+/* .palette__colors {
   height: 90%;
-}
+} */
 
 .palette__footer {
   height: 5vh;
