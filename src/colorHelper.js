@@ -24,7 +24,7 @@ const generatePalette = (starterPalette) => {
         rgb: chroma(scale[i]).css(),
         rgba: chroma(scale[i]).css().replace('rgb', 'rgba').replace(')', ',1.0)'),
         hsl: chroma(scale[i]).css('hsl')
-      }) 
+      })
     }
   });
   return newPalette;

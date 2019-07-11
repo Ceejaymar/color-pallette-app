@@ -28,7 +28,7 @@ class Palette extends Component {
     const { colorLevel, format } = this.state;
 
     const colorBoxes = colors[colorLevel].map(color => (
-      <ColorBox 
+      <ColorBox
         background={color[format]}
         name={color.name}
         key={color.id}

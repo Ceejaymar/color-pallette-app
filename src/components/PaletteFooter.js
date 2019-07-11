@@ -6,7 +6,7 @@ const PaletteFooter = ({ paletteName, emoji, classes: { footer, footerEmoji } })
   return (
     <div>
       <footer className={`${footer}`}>
-          {paletteName} 
+          {paletteName}
           <span className={`${footerEmoji}`}>{emoji}</span>
         </footer>
     </div>
