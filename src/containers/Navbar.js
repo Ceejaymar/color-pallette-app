@@ -25,19 +25,19 @@ class Navbar extends Component {
   handleButton = () => {
     this.state.isOpen && this.setState({ isOpen: false });
   }
-  
+
   render() {
     const { format, isOpen } = this.state;
-    const { 
-      colorLevel, 
-      handleLevelChange, 
-      showingColorLevel, 
-      classes: { 
-        navbar, 
-        navLogo, 
+    const {
+      colorLevel,
+      handleLevelChange,
+      showingColorLevel,
+      classes: {
+        navbar,
+        navLogo,
         navSlider,
         navSelect
-      } 
+      }
     } = this.props;
 
     return (
@@ -69,7 +69,7 @@ class Navbar extends Component {
             <MenuItem value='hsl'>HSL - hsl(0, 0%, 100%)</MenuItem>
           </Select>
         </div>
-        <SnackBar 
+        <SnackBar
           anchorOrigin={{ vertical: 'bottom', horizontal: 'left'}}
           open={isOpen}
           autoHideDuration={3000}
@@ -77,7 +77,7 @@ class Navbar extends Component {
           ContentProps={{ 'aria-describedby': 'message-id'}}
           onClose={this.handleButton}
           action={[
-            <IconButton 
+            <IconButton
               key='close'
               aria-label='close'
               color='inherit'

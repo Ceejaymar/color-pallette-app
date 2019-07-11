@@ -29,7 +29,7 @@ export default {
     '& .rc-slider-track': {
       backgroundColor: 'transparent'
     },
-    '& .rc-slider-handle, .rc-slider-handle:active .rc-slider-handle:focus, .rc-slider-handle:hover': {
+    '& .rc-slider-handle, .rc-slider-handle:active,.rc-slider-handle:focus,.rc-slider-handle:hover': {
       backgroundColor: 'mediumseagreen',
       outline: 'none',
       border: '2px solid mediumseagreen',

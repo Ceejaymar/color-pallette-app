@@ -20,7 +20,7 @@ class ColorBox extends Component {
   }
 
   render() {
-    const { copyOverlay: copied  } = this.state; 
+    const { copyOverlay: copied  } = this.state;
     const {
       background,
       name,
