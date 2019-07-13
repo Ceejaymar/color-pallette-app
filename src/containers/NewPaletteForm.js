@@ -57,7 +57,7 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -74,17 +74,33 @@ const styles = theme => ({
 });
 
 class PersistentDrawerLeft extends React.Component {
-  state = {
-    open: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: 'false',
+      currentColor: 'purple',
+      colors: ['purple', '#a1bff3']
+    }
+  }
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
-  };
+  }
 
   handleDrawerClose = () => {
     this.setState({ open: false });
-  };
+  }
+
+  handleColorUpdate = (color) => {
+    const currentColor = color.hex;
+
+    this.setState({ currentColor });
+  }
+
+  handleAddColor = () => {
+    this.setState({ colors: [...this.state.colors, this.state.currentColor]});
+  }
 
   render() {
     const { classes, theme } = this.props;
@@ -140,7 +156,8 @@ class PersistentDrawerLeft extends React.Component {
           <Button
             variant="contained"
             color="primary"
-            style={{backgroundColor: this.state.currentColor}}
+            style={{ backgroundColor: this.state.currentColor }}
+            onClick={this.handleAddColor}
           >add color</Button>
         </Drawer>
         <main
@@ -149,15 +166,22 @@ class PersistentDrawerLeft extends React.Component {
           })}
         >
           <div className={classes.drawerHeader} />
+          <ul className="">
+            {
+              this.state.colors.map((color, key) => (
+                <li key={key} style={{ backgroundColor: `${color}`}}>{color}</li>
+              ))
+            }
+          </ul>
         </main>
       </div>
     );
   }
 }
 
-// PersistentDrawerLeft.propTypes = {
-//   classes: PropTypes.object.isRequired,
-//   theme: PropTypes.object.isRequired,
-// };
+PersistentDrawerLeft.propTypes = {
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired,
+};
 
 export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
