@@ -12,6 +12,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import { ChromePicker } from 'react-color';
 import DraggableColorBox from '../components/DraggableColorBox';
 
@@ -80,10 +81,21 @@ class PersistentDrawerLeft extends React.Component {
     super(props);
 
     this.state = {
-      open: 'false',
+      open: true,
       currentColor: 'purple',
-      colors: ['purple', '#a1bff3']
+      colors: [{ color: 'blue', name: 'blue'}, { color: 'purple', name: 'purple'}],
+      nameInput: ''
     }
+  }
+
+  componentDidMount() {
+      ValidatorForm.addValidationRule('isColorNameUnique', value => (
+        this.state.colors.every(({name}) => name.toLowerCase() !== value.toLowerCase())
+      ));
+
+      ValidatorForm.addValidationRule('isColorUnique', value => (
+        this.state.colors.every(({color}) => color !== this.state.currentColor)
+      ));
   }
 
   handleDrawerOpen = () => {
@@ -101,7 +113,15 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   handleAddColor = () => {
-    this.setState({ colors: [...this.state.colors, this.state.currentColor]});
+    const newColor = {
+      color: this.state.currentColor,
+      name: this.state.nameInput
+    }
+    this.setState({ colors: [...this.state.colors, newColor], nameInput: ''});
+  }
+
+  handleChange = (e) => {
+    this.setState({ nameInput: e.target.value})
   }
 
   render() {
@@ -112,29 +132,29 @@ class PersistentDrawerLeft extends React.Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          position="fixed"
+          position='fixed'
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
         >
           <Toolbar disableGutters={!open}>
             <IconButton
-              color="inherit"
-              aria-label="Open drawer"
+              color='inherit'
+              aria-label='Open drawer'
               onClick={this.handleDrawerOpen}
               className={classNames(classes.menuButton, open && classes.hide)}
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
+            <Typography variant='h6' color='inherit' noWrap>
               Persistent drawer
             </Typography>
           </Toolbar>
         </AppBar>
         <Drawer
           className={classes.drawer}
-          variant="persistent"
-          anchor="left"
+          variant='persistent'
+          anchor='left'
           open={open}
           classes={{
             paper: classes.drawerPaper,
@@ -148,19 +168,27 @@ class PersistentDrawerLeft extends React.Component {
           <Divider />
           <Typography variant='h4'>Design your palette</Typography>
           <div>
-            <Button variant="contained" color="secondary">Clear palette</Button>
-            <Button variant="contained" color="primary">random color</Button>
+            <Button variant='contained' color='secondary'>Clear palette</Button>
+            <Button variant='contained' color='primary'>random color</Button>
           </div>
           <ChromePicker
             color={this.state.currentColor}
             onChangeComplete={this.handleColorUpdate}
           />
+          <ValidatorForm onSubmit={this.handleAddColor}>
+            <TextValidator
+              value={this.state.nameInput}
+              onChange={this.handleChange}
+              validators={['required', 'isColorNameUnique', 'isColorUnique']}
+              errorMessages={['this field is required', 'Name must be unique', 'Color must be unique']}
+            />
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             style={{ backgroundColor: this.state.currentColor }}
-            onClick={this.handleAddColor}
+            type='submit'
           >add color</Button>
+          </ValidatorForm>
         </Drawer>
         <main
           className={classNames(classes.content, {
@@ -170,7 +198,7 @@ class PersistentDrawerLeft extends React.Component {
           <div className={classes.drawerHeader} />
             {
               this.state.colors.map((color, key) => (
-                <DraggableColorBox color={color} key={key} />
+                <DraggableColorBox color={color.color} name={color.name} key={key} />
               ))
             }
         </main>
