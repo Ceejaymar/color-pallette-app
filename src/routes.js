@@ -4,16 +4,9 @@ import PaletteBoard from './containers/PaletteBoard';
 import Palette from './containers/Palette';
 import SingleColorPalette from './containers/SingleColorPalette';
 import NewPaletteForm from './containers/NewPaletteForm';
-import seedColors from './seed-colors';
 import { generatePalette } from './colorHelper';
 
 class Routes extends Component {
-  findPalette = (id) => {
-    return seedColors.find(palette => {
-      return palette.id === id;
-    });
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -21,20 +14,20 @@ class Routes extends Component {
           <Route
             exact
             path='/palette/new/'
-            render={() => <NewPaletteForm /> }
+            render={routeProps => <NewPaletteForm {...routeProps} savePalette={this.props.savePalette} /> }
           />
           <Route
             exact
             path='/'
             render={routeProps => (
-              <PaletteBoard palettes={seedColors} {...routeProps} />
+              <PaletteBoard palettes={this.props.palettes} {...routeProps} />
             )}
           />
           <Route
             exact
             path='/palette/:paletteId'
             render={routeProps => (
-              <Palette palette={generatePalette(this.findPalette(routeProps.match.params.paletteId))} />
+              <Palette palette={generatePalette(this.props.findPalette(routeProps.match.params.paletteId))} />
             )}
           />
           <Route
@@ -43,7 +36,7 @@ class Routes extends Component {
             render={routeProps => (
               <SingleColorPalette
                 colorId={routeProps.match.params.colorId}
-                palette={generatePalette(this.findPalette(routeProps.match.params.paletteId))} />
+                palette={generatePalette(this.props.findPalette(routeProps.match.params.paletteId))} />
             )}
           />
         </Switch>

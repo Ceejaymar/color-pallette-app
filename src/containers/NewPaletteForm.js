@@ -124,15 +124,29 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ nameInput: e.target.value})
   }
 
+  handlePaletteSubmit = () => {
+    const newName = 'New Test Palette';
+    const newPalette = {
+      paletteName: newName,
+      id: newName.replace(/ /g, '-'),
+      colors: this.state.colors
+    }
+
+    this.props.savePalette(newPalette);
+    this.props.history.push('/');
+  }
+
   render() {
     const { classes, theme } = this.props;
     const { open } = this.state;
 
+    console.log(this.props);
     return (
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
           position='fixed'
+          color="default"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
@@ -149,6 +163,11 @@ class PersistentDrawerLeft extends React.Component {
             <Typography variant='h6' color='inherit' noWrap>
               Persistent drawer
             </Typography>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={this.handlePaletteSubmit}
+            >Save Palette</Button>
           </Toolbar>
         </AppBar>
         <Drawer
