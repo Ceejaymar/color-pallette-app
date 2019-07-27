@@ -14,7 +14,7 @@ class Routes extends Component {
           <Route
             exact
             path='/palette/new/'
-            render={routeProps => <NewPaletteForm {...routeProps} savePalette={this.props.savePalette} /> }
+            render={routeProps => <NewPaletteForm {...routeProps} palettes={this.props.palettes} savePalette={this.props.savePalette} /> }
           />
           <Route
             exact

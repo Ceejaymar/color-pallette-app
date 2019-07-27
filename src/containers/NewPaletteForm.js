@@ -84,17 +84,22 @@ class PersistentDrawerLeft extends React.Component {
       open: true,
       currentColor: 'purple',
       colors: [{ color: 'blue', name: 'blue'}, { color: 'purple', name: 'purple'}],
-      nameInput: ''
+      newPaletteName: '',
+      newColorName: ''
     }
   }
 
   componentDidMount() {
       ValidatorForm.addValidationRule('isColorNameUnique', value => (
-        this.state.colors.every(({name}) => name.toLowerCase() !== value.toLowerCase())
+        this.state.colors.every(({ name }) => name.toLowerCase() !== value.toLowerCase())
       ));
 
-      ValidatorForm.addValidationRule('isColorUnique', value => (
-        this.state.colors.every(({color}) => color !== this.state.currentColor)
+      ValidatorForm.addValidationRule('isColorUnique', () => (
+        this.state.colors.every(({ color }) => color !== this.state.currentColor)
+      ));
+
+      ValidatorForm.addValidationRule('isPaletteNameUnique', value => (
+        this.props.palettes.every(({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase())
       ));
   }
 
@@ -115,17 +120,17 @@ class PersistentDrawerLeft extends React.Component {
   handleAddColor = () => {
     const newColor = {
       color: this.state.currentColor,
-      name: this.state.nameInput
+      name: this.state.newColorName
     }
-    this.setState({ colors: [...this.state.colors, newColor], nameInput: ''});
+    this.setState({ colors: [...this.state.colors, newColor], newColorName: ''});
   }
 
   handleChange = (e) => {
-    this.setState({ nameInput: e.target.value})
+    this.setState({ [e.target.name]: e.target.value})
   }
 
   handlePaletteSubmit = () => {
-    const newName = 'New Test Palette';
+    const newName = this.state.newPaletteName;
     const newPalette = {
       paletteName: newName,
       id: newName.replace(/ /g, '-'),
@@ -138,15 +143,14 @@ class PersistentDrawerLeft extends React.Component {
 
   render() {
     const { classes, theme } = this.props;
-    const { open } = this.state;
+    const { open, newPaletteName, newColorName } = this.state;
 
-    console.log(this.props);
     return (
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
           position='fixed'
-          color="default"
+          color='default'
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
@@ -163,11 +167,21 @@ class PersistentDrawerLeft extends React.Component {
             <Typography variant='h6' color='inherit' noWrap>
               Persistent drawer
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handlePaletteSubmit}
-            >Save Palette</Button>
+            <ValidatorForm onSubmit={this.handlePaletteSubmit} >
+              <TextValidator
+                label='palette name'
+                name='newPaletteName'
+                value={newPaletteName}
+                onChange={this.handleChange}
+                validators={['required', 'isPaletteNameUnique']}
+                errorMessages={['Enter palette name', 'palette name must be unique']}
+              />
+              <Button
+                variant='contained'
+                color='primary'
+                type='submit'
+              >Save Palette</Button>
+            </ValidatorForm>
           </Toolbar>
         </AppBar>
         <Drawer
@@ -194,19 +208,21 @@ class PersistentDrawerLeft extends React.Component {
             color={this.state.currentColor}
             onChangeComplete={this.handleColorUpdate}
           />
-          <ValidatorForm onSubmit={this.handleAddColor}>
+          <ValidatorForm onSubmit={this.handleAddColor} ref='form'>
             <TextValidator
-              value={this.state.nameInput}
+              value={newColorName}
+              label='color name'
+              name='newColorName'
               onChange={this.handleChange}
               validators={['required', 'isColorNameUnique', 'isColorUnique']}
               errorMessages={['this field is required', 'Name must be unique', 'Color must be unique']}
             />
-          <Button
-            variant='contained'
-            color='primary'
-            style={{ backgroundColor: this.state.currentColor }}
-            type='submit'
-          >add color</Button>
+            <Button
+              variant='contained'
+              color='primary'
+              style={{ backgroundColor: this.state.currentColor }}
+              type='submit'
+            >add color</Button>
           </ValidatorForm>
         </Drawer>
         <main
