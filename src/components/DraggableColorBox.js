@@ -32,15 +32,18 @@ const styles = {
   }
 }
 
-const DraggableColorBox = ({ color, name, classes: { root, boxContent, deleteIcon } }) => {
-
+const DraggableColorBox = ({
+  color,
+  name,
+  removeColor,
+  classes: { root, boxContent, deleteIcon }
+}) => {
   return (
-    <div className={root} style={{ backgroundColor: `${color}`}}>
+    <div className={root} style={{ backgroundColor: `${color}`}} onClick={() => removeColor(name)}>
       <div className={boxContent}>
         <span>{name}</span>
         <DeleteForeverIcon className={deleteIcon}/>
       </div>
-
     </div>
   );
 };

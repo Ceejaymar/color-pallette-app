@@ -125,6 +125,10 @@ class PersistentDrawerLeft extends React.Component {
     this.setState({ colors: [...this.state.colors, newColor], newColorName: ''});
   }
 
+  handleRemoveColor = (colorName) => {
+    this.setState({ colors: this.state.colors.filter(color => color.name !== colorName)})
+  }
+
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value})
   }
@@ -233,7 +237,12 @@ class PersistentDrawerLeft extends React.Component {
           <div className={classes.drawerHeader} />
             {
               this.state.colors.map((color, key) => (
-                <DraggableColorBox color={color.color} name={color.name} key={key} />
+                <DraggableColorBox
+                  color={color.color}
+                  name={color.name}
+                  key={key}
+                  removeColor={this.handleRemoveColor}
+                />
               ))
             }
         </main>
