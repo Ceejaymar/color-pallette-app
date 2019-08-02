@@ -77,14 +77,14 @@ const styles = theme => ({
   },
 });
 
-class PersistentDrawerLeft extends React.Component {
+class NewPaletteForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       open: true,
       currentColor: 'purple',
-      colors: [{ color: 'blue', name: 'blue'}, { color: 'purple', name: 'purple'}],
+      colors: this.props.palettes[0].colors,
       newPaletteName: '',
       newColorName: ''
     }
@@ -127,6 +127,7 @@ class PersistentDrawerLeft extends React.Component {
   }
 
   handleRemoveColor = (colorName) => {
+    // console.log('this got hittt');
     this.setState({ colors: this.state.colors.filter(color => color.name !== colorName)})
   }
 
@@ -247,6 +248,7 @@ class PersistentDrawerLeft extends React.Component {
             removeColor={this.handleRemoveColor}
             axis='xy'
             onSortEnd={this.onSortEnd}
+            pressDelay={100}
           />
         </main>
       </div>
@@ -254,9 +256,9 @@ class PersistentDrawerLeft extends React.Component {
   }
 }
 
-PersistentDrawerLeft.propTypes = {
+NewPaletteForm.propTypes = {
   classes: PropTypes.object.isRequired,
   theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(PersistentDrawerLeft);
+export default withStyles(styles, { withTheme: true })(NewPaletteForm);
