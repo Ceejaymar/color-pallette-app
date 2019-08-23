@@ -9,7 +9,8 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+
+import PaletteMetaForm from './PaletteMetaForm';
 
 const drawerWidth = 400;
 
@@ -49,21 +50,15 @@ class PaletteFormNav extends Component {
 
     this.state = {
       newPaletteName: ''
-    }
-  }
-
-  componentDidMount() {
-    ValidatorForm.addValidationRule('isPaletteNameUnique', value => (
-      this.props.palettes.every(({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase())
-    ));
+    };
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({ [e.target.name]: e.target.value });
   }
 
   render() {
-    const { classes, open, submit, handleDrawerOpen } = this.props;
+    const { classes, open, submit, handleDrawerOpen, palettes } = this.props;
     const { newPaletteName } = this.state;
 
     return (
@@ -90,21 +85,10 @@ class PaletteFormNav extends Component {
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <ValidatorForm onSubmit={() => submit(newPaletteName)} >
-              <TextValidator
-                label='palette name'
-                name='newPaletteName'
-                value={newPaletteName}
-                onChange={this.handleChange}
-                validators={['required', 'isPaletteNameUnique']}
-                errorMessages={['Enter palette name', 'palette name must be unique']}
-              />
-              <Button
-                variant='contained'
-                color='primary'
-                type='submit'
-              >Save Palette</Button>
-            </ValidatorForm>
+            <PaletteMetaForm
+              submit={submit}
+              palettes={palettes}
+            />
             <Link to='/'>
               <Button variant='contained' color='secondary'>Go Back</Button>
             </Link>
