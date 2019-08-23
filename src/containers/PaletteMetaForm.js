@@ -8,23 +8,19 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 class PaletteMetaForm extends Component {
-  state = {
-    open: false,
-    newPaletteName: ''
-  };
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      open: true,
+      newPaletteName: ''
+    };
+  }
 
   componentDidMount() {
     ValidatorForm.addValidationRule('isPaletteNameUnique', value => (
       this.props.palettes.every(({ paletteName }) => paletteName.toLowerCase() !== value.toLowerCase())
     ));
-  }
-
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  }
-
-  handleClose = () => {
-    this.setState({ open: false });
   }
 
   handleChange = (e) => {
@@ -33,12 +29,12 @@ class PaletteMetaForm extends Component {
 
   render() {
     const { newPaletteName } = this.state;
-    const { submit } = this.props;
+    const { submit, hideForm } = this.props;
 
     return (
       <Dialog
         open={this.state.open}
-        onClose={this.handleClose}
+        onClose={hideForm}
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Submit a new palette</DialogTitle>
@@ -67,7 +63,7 @@ class PaletteMetaForm extends Component {
               Save Palette
             </Button>
             <Button
-              onClick={this.handleClose}
+              onClick={hideForm}
               variant='contained'
               color="secondary"
             >
