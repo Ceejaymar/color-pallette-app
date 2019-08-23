@@ -20,24 +20,6 @@ const styles = theme => ({
   root: {
     display: 'flex',
   },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
-  },
   hide: {
     display: 'none',
   },
@@ -47,6 +29,8 @@ const styles = theme => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    display: 'flex',
+    alignItems: 'center'
   },
   drawerHeader: {
     display: 'flex',
@@ -72,6 +56,20 @@ const styles = theme => ({
     }),
     marginLeft: 0,
   },
+  drawerContainer: {
+    width: '90%',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  buttons: {
+    width: '100%'
+  },
+  button: {
+    width: '50%'
+  }
 });
 
 class NewPaletteForm extends React.Component {
@@ -147,7 +145,6 @@ class NewPaletteForm extends React.Component {
       <div className={classes.root}>
         <PaletteFormNav
           open={open}
-          classes={classes}
           palettes={palettes}
           submit={this.handlePaletteSubmit}
           handleDrawerOpen={this.handleDrawerOpen}
@@ -167,23 +164,33 @@ class NewPaletteForm extends React.Component {
             </IconButton>
           </div>
           <Divider />
-          <Typography variant='h4'>Design your palette</Typography>
-          <div>
-            <Button onClick={this.handleClearPalette} variant='contained' color='secondary'>Clear palette</Button>
-            <Button
-              onClick={this.handleAddRandom}
-              variant='contained'
-              color='primary'
-              disabled={paletteIsFull}
-            >
-              random color
-            </Button>
+          <div className={classes.drawerContainer}>
+            <Typography variant='h4' gutterBottom>Design your palette</Typography>
+            <div className={classes.buttons}>
+              <Button
+                onClick={this.handleClearPalette}
+                variant='contained'
+                color='secondary'
+                className={classes.button}
+              >
+                Clear palette
+              </Button>
+              <Button
+                onClick={this.handleAddRandom}
+                variant='contained'
+                color='primary'
+                className={classes.button}
+                disabled={paletteIsFull}
+              >
+                random color
+              </Button>
+            </div>
+            <ColorPickerForm
+              paletteIsfull={paletteIsFull}
+              addColor={this.handleAddColor}
+              colors={colors}
+            />
           </div>
-          <ColorPickerForm
-            paletteIsfull={paletteIsFull}
-            addColor={this.handleAddColor}
-            colors={ colors }
-          />
         </Drawer>
         <main
           className={classNames(classes.content, {
