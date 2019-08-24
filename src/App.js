@@ -23,7 +23,14 @@ class App extends Component {
     this.setState({ palettes: [...this.state.palettes, newPalette] }, this.syncSessionStorage);
   }
 
-  syncSessionStorage(){
+  deletePalette = (paletteId) => {
+    this.setState(
+      st => ({palettes: st.palettes.filter(palette => palette.id !== paletteId) }),
+      this.syncSessionStorage
+    )
+  }
+
+  syncSessionStorage = () => {
     window.sessionStorage.setItem('palettes', JSON.stringify(this.state.palettes));
   }
 
@@ -32,7 +39,9 @@ class App extends Component {
       <Routes
         savePalette={this.savePalette}
         findPalette={this.findPalette}
-        palettes={this.state.palettes} />
+        palettes={this.state.palettes}
+        deletePalette={this.deletePalette}
+      />
     );
   }
 }

@@ -8,26 +8,28 @@ import { generatePalette } from './colorHelper';
 
 class Routes extends Component {
   render() {
+    const { palettes, findPalette, savePalette, deletePalette } = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
           <Route
             exact
             path='/palette/new/'
-            render={routeProps => <NewPaletteForm {...routeProps} palettes={this.props.palettes} savePalette={this.props.savePalette} /> }
+            render={routeProps => <NewPaletteForm {...routeProps} palettes={palettes} savePalette={savePalette} /> }
           />
           <Route
             exact
             path='/'
             render={routeProps => (
-              <PaletteBoard palettes={this.props.palettes} {...routeProps} />
+              <PaletteBoard palettes={palettes} {...routeProps} deletePalette={deletePalette} />
             )}
           />
           <Route
             exact
             path='/palette/:paletteId'
             render={routeProps => (
-              <Palette palette={generatePalette(this.props.findPalette(routeProps.match.params.paletteId))} />
+              <Palette palette={generatePalette(findPalette(routeProps.match.params.paletteId))} />
             )}
           />
           <Route
@@ -36,7 +38,7 @@ class Routes extends Component {
             render={routeProps => (
               <SingleColorPalette
                 colorId={routeProps.match.params.colorId}
-                palette={generatePalette(this.props.findPalette(routeProps.match.params.paletteId))} />
+                palette={generatePalette(findPalette(routeProps.match.params.paletteId))} />
             )}
           />
         </Switch>
