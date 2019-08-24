@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default {
   main: {
     height: '98vh',
@@ -37,6 +39,22 @@ export default {
       textTransform: 'uppercase',
       textDecoration: 'none',
       border: 'none'
+    },
+    [sizes.down('lg')]: {
+      width: '75%',
+      height: '33.5%'
+    },
+    [sizes.down('md')]: {
+      width: '100%',
+      height: '20%'
+    },
+    [sizes.down('sm')]: {
+      width: '50%',
+      height: '20%'
+    },
+    [sizes.down('xs')]: {
+      width: '100%',
+      height: '10%'
     }
   }
 }

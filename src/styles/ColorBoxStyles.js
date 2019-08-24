@@ -13,19 +13,19 @@ export default {
     '&:hover button': {
       opacity: '1'
     },
-    [sizes.down("lg")]: {
+    [sizes.down('lg')]: {
       width: '25%',
-      height: props => props.showFullPalette ? '20%' : '50%',
+      height: props => props.showFullPalette ? '20%' : '33.5%',
     },
-    [sizes.down("md")]: {
+    [sizes.down('md')]: {
       width: '33.33%',
-      height: props => props.showFullPalette ? '14.3%' : '50%',
+      height: props => props.showFullPalette ? '14.3%' : '27%',
     },
-    [sizes.down("sm")]: {
+    [sizes.down('sm')]: {
       width: '50%',
-      height: props => props.showFullPalette ? '10.05%' : '50%',
+      height: props => props.showFullPalette ? '10.05%' : '20%',
     },
-    [sizes.down("xs")]: {
+    [sizes.down('xs')]: {
       width: '100%',
       height: props => props.showFullPalette ? '5.05%' : '10%',
     },
@@ -69,11 +69,12 @@ export default {
     opacity: '0'
   },
   boxContent: {
+    boxSizing: 'border-box',
     position: 'absolute',
     width: '100%',
     left: '0',
     bottom: '0',
-    padding: '10px',
+    padding: '0 0 10px 10px',
     color: 'black',
     letterSpacing: '1px'
   },
@@ -114,7 +115,10 @@ export default {
       textAlign: 'center',
       marginBottom: '0',
       padding: '1rem',
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      [sizes.down('xs')]: {
+        fontSize: '5rem'
+      }
     },
     '& p': {
       fontSize: '2rem',
