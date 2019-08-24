@@ -6,8 +6,10 @@ class App extends Component {
   constructor(props) {
     super(props);
 
+    const savedPalettes = JSON.parse(window.sessionStorage.getItem('palettes'));
+
     this.state = {
-      palettes: seedColors
+      palettes: savedPalettes || seedColors
     };
   }
 
@@ -18,7 +20,11 @@ class App extends Component {
   }
 
   savePalette = (newPalette) => {
-    this.setState({ palettes: [...this.state.palettes, newPalette] });
+    this.setState({ palettes: [...this.state.palettes, newPalette] }, this.syncSessionStorage);
+  }
+
+  syncSessionStorage(){
+    window.sessionStorage.setItem('palettes', JSON.stringify(this.state.palettes));
   }
 
   render() {
