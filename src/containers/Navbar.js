@@ -41,15 +41,15 @@ class Navbar extends Component {
     } = this.props;
 
     return (
-      <nav className={`${navbar}`}>
-        <div className={`${navLogo}`}>
+      <nav className={navbar}>
+        <div className={navLogo}>
           <Link to='/'>Color picker</Link>
         </div>
         {
           showingColorLevel && (
             <div className='navbar__slider-container'>
               <span className='navbar__slider-level'>Level: {colorLevel}</span>
-                <div className={`${navSlider}`}>
+                <div className={navSlider}>
                   <Slider
                     defaultValue={colorLevel}
                     min={100}
@@ -61,7 +61,7 @@ class Navbar extends Component {
             </div>
           )
         }
-        <div className={`${navSelect}`}>
+        <div className={navSelect}>
           <Select onChange={this.handleFormatChange} value={format}>
             <MenuItem value='hex'>Hex - #ffffff</MenuItem>
             <MenuItem value='rgb'>RGB - rgb(255, 255, 255)</MenuItem>

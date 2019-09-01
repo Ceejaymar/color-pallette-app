@@ -1,3 +1,5 @@
+import sizes from './sizes';
+
 export default {
   navbar: {
     display: 'flex',
@@ -17,6 +19,9 @@ export default {
     '& a': {
       textDecoration: 'none',
       color:' black'
+    },
+    [sizes.down('xs')]: {
+      display: 'none'
     }
   },
   navSlider: {
@@ -37,7 +42,13 @@ export default {
       height: '15px',
       width: '15px',
       marginTop: '-2.75px'
-    }
+    },
+    [sizes.down('sm')]: {
+      width: '200px'
+    },
+    [sizes.down('xs')]: {
+      width: '150px'
+    },
   },
   navSelect: {
     marginLeft: 'auto',
