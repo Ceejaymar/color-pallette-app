@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Routes from './routes';
 import seedColors from './seed-colors';
 
+import './App.css';
+
 class App extends Component {
   constructor(props) {
     super(props);
