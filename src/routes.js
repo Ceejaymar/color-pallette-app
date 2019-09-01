@@ -68,6 +68,17 @@ class Routes extends Component {
                     </Page>
                   )}
                 />
+                <Route
+                  render={routeProps => (
+                    <Page>
+                      <PaletteBoard
+                        palettes={palettes}
+                        {...routeProps}
+                        deletePalette={deletePalette}
+                      />
+                    </Page>
+                  )}
+                />
               </Switch>
             </CSSTransition>
           </TransitionGroup>
