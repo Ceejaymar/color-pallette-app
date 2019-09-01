@@ -13,6 +13,7 @@ import arrayMove from 'array-move';
 
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
+import seedColors from '../seed-colors';
 
 import styles from '../styles/NewPaletteFormStyles';
 
@@ -25,7 +26,7 @@ class NewPaletteForm extends React.Component {
 
     this.state = {
       open: true,
-      colors: this.props.palettes[0].colors,
+      colors: seedColors[0].colors,
       newPaletteName: ''
     }
   }
