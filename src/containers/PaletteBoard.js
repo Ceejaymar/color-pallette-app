@@ -64,7 +64,7 @@ class PaletteBoard extends Component {
                   <MiniPalette
                     key={palette.id}
                     {...palette}
-                    handleGoToPalette={() => this.handleGoToPalette(palette.id)}
+                    handleGoToPalette={this.handleGoToPalette}
                     openDialog={this.openDialog}
                     id={palette.id}
                   />
@@ -75,7 +75,7 @@ class PaletteBoard extends Component {
         </div>
         <Dialog
           open={openDeleteDialog}
-          aria-labelledBy='delete-dialog-title'
+          aria-labelledby='delete-dialog-title'
           onClose={this.closeDialog}
         >
           <DialogTitle id='delete-dialog-title'>Delete this palette?</DialogTitle>
