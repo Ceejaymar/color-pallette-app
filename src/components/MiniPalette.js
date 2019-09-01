@@ -6,10 +6,10 @@ import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 class MiniPalette extends Component {
 
   handlePaletteDelete = (e) => {
-    const { handleDelete, id } = this.props;
+    const { openDialog, id } = this.props;
     e.stopPropagation();
 
-    handleDelete(id);
+    openDialog(id);
   }
 
   render() {
