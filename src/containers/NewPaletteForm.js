@@ -145,7 +145,7 @@ class NewPaletteForm extends React.Component {
             removeColor={this.handleRemoveColor}
             axis='xy'
             onSortEnd={this.onSortEnd}
-            pressDelay={100}
+            distance={20}
           />
         </main>
       </div>
