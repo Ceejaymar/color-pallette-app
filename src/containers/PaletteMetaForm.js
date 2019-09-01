@@ -42,6 +42,8 @@ class PaletteMetaForm extends Component {
       paletteName: newPaletteName,
       emoji: native
     });
+
+    this.setState({ stage: '' });
   }
 
   render() {
