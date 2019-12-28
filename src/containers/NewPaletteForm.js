@@ -21,6 +21,7 @@ class NewPaletteForm extends React.Component {
   static defaultProps = {
     maxColors: 20
   }
+
   constructor(props) {
     super(props);
 
