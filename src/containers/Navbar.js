@@ -18,7 +18,7 @@ class Navbar extends Component {
   }
 
   handleFormatChange = async (e) => {
-    await this.setState({ format: e.target.value, isOpen: true});
+    this.setState({ format: e.target.value, isOpen: true});
     await this.props.handleFormatChange(this.state.format);
   }
 
