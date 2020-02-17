@@ -167,7 +167,7 @@ class PaletteBoard extends Component {
       <div className={root}>
         <div className={container}>
           <nav className={nav}>
-            <h1>Color picker</h1>
+            <h1>Pallete Picker</h1>
             <Link to='/palette/new'>Create new palette</Link>
           </nav>
           <TransitionGroup className={palette}>

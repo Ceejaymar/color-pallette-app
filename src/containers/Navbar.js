@@ -50,7 +50,7 @@ class Navbar extends Component {
     return (
       <nav className={navbar}>
         <div className={navLogo}>
-          <Link to="/">Color picker</Link>
+          <Link to="/">Pallete Picker</Link>
         </div>
         {
           showingColorLevel && (
