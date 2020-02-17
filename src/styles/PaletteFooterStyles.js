@@ -7,6 +7,6 @@ export default {
     fontEeight: '500',
   },
   footerEmoji: {
-    padding: '0 10px'
-  }
-}
+    padding: '0 10px',
+  },
+};

@@ -8,35 +8,40 @@ import styles from '../styles/PaletteStyles';
 
 class SingleColorPalette extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this._shades = this.handleGetShades(this.props.palette, this.props.colorId);
 
     this.state = {
-      format: 'hex'
-    }
+      format: 'hex',
+    };
+
+    this.handleFormatChange = this.handleFormatChange.bind(this);
+    // this.handleGetShades = this.handleGetShades.bind(this);
   }
 
-  handleGetShades = (palette, filterColor) => {
+  handleGetShades(palette, filterColor) {
     let shades = [];
     const allColors = palette.colors;
 
-    for (let key in allColors) {
-      shades = shades.concat(allColors[key].filter(color => color.id === filterColor));
+    for (const key in allColors) {
+      if ({}.hasOwnProperty.call(allColors, key)) {
+        shades = shades.concat(allColors[key].filter((color) => color.id === filterColor));
+      }
     }
 
     return shades.slice(1);
   }
 
-  handleFormatChange = (format) => {
-    this.setState({ format })
+  handleFormatChange(format) {
+    this.setState({ format });
   }
 
   render() {
     const { format } = this.state;
-    const { palette: { paletteName, emoji, id }, classes: { main, paletteColors, goBack }} = this.props;
+    const { palette: { paletteName, emoji, id }, classes: { main, paletteColors, goBack } } = this.props;
 
-    const colorBoxes = this._shades.map(color => {
+    const colorBoxes = this._shades.map((color) => {
       const { name } = color;
 
       return (
@@ -46,8 +51,8 @@ class SingleColorPalette extends Component {
           background={color[format]}
           showingFullPalette={false}
         />
-      )
-    })
+      );
+    });
 
     return (
       <div className={`${main} palette--single`}>

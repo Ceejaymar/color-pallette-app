@@ -1,0 +1,43 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "object-curly-newline": ["error", {
+            // "ObjectExpression": "always",
+            "ObjectPattern": { "multiline": true },
+            "ImportDeclaration": "never",
+            "ExportDeclaration": { "multiline": true, "minProperties": 4 }
+        }],
+        "arrow-parens": ["error", "always"],
+        "jsx-a11y/label-has-associated-control": [ 2, {
+        "labelComponents": ["CustomLabel"],
+          "labelAttributes": ["inputLabel"],
+          "controlComponents": ["CustomInput"],
+          "assert": "either",
+          "depth": 3
+        }],
+        "import/no-named-as-default-member": 0,
+        "import/no-named-as-default": 0
+      }
+}

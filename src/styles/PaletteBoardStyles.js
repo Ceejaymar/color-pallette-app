@@ -4,12 +4,12 @@ import bg from './bg.svg';
 export default {
   '@global': {
     '.fade-exit': {
-      opacity: 1
+      opacity: 1,
     },
     '.fade-exit-active': {
       opacity: 0,
-      transition: '400ms ease-out'
-    }
+      transition: '400ms ease-out',
+    },
   },
   root: {
     height: '100vh',
@@ -21,7 +21,7 @@ export default {
     /* background by SVGBackgrounds.com */
     [sizes.down('md')]: {
       overflow: 'scroll',
-    }
+    },
   },
   container: {
     width: '50%',
@@ -30,11 +30,11 @@ export default {
     flexDirection: 'column',
     flexWrap: 'wrap',
     [sizes.down('xl')]: {
-      width: '70%'
+      width: '70%',
     },
     [sizes.down('lg')]: {
-      width: '60%'
-    }
+      width: '60%',
+    },
   },
   nav: {
     display: 'flex',
@@ -46,9 +46,9 @@ export default {
       color: 'white',
       textDecoration: 'none',
       '&:hover': {
-        color: '#dfdfdf'
-      }
-    }
+        color: '#dfdfdf',
+      },
+    },
   },
   palette: {
     boxSizing: 'border-box',
@@ -58,11 +58,11 @@ export default {
     gridGap: '5%',
     [sizes.down('md')]: {
       gridTemplateColumns: 'repeat(2, 50%)',
-      gridGap: '3%'
+      gridGap: '3%',
     },
     [sizes.down('xs')]: {
       gridTemplateColumns: 'repeat(1, 100%)',
-      gridGap: '1%'
-    }
-  }
-}
+      gridGap: '1%',
+    },
+  },
+};

@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import AddToPhotosIcon from '@material-ui/icons/AddToPhotos';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
-
 import PaletteMetaForm from './PaletteMetaForm';
 
 import styles from '../styles/PaletteFormNavStyles';
@@ -20,19 +19,23 @@ class PaletteFormNav extends Component {
 
     this.state = {
       newPaletteName: '',
-      formShowing: false
+      formShowing: false,
     };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleShowForm = this.handleShowForm.bind(this);
+    this.handleHideForm = this.handleHideForm.bind(this);
   }
 
-  handleChange = (e) => {
+  handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  handleShowForm = () => {
+  handleShowForm() {
     this.setState({ formShowing: true });
   }
 
-  handleHideForm = () => {
+  handleHideForm() {
     this.setState({ formShowing: false });
   }
 
@@ -43,30 +46,30 @@ class PaletteFormNav extends Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          position='fixed'
-          color='default'
+          position="fixed"
+          color="default"
           className={classNames(classes.appBar, {
             [classes.appBarShift]: open,
           })}
         >
           <Toolbar disableGutters={!open}>
             <IconButton
-              color='inherit'
-              aria-label='Open drawer'
+              color="inherit"
+              aria-label="Open drawer"
               onClick={handleDrawerOpen}
               className={classNames(classes.menuButton, open && classes.hide)}
             >
               <AddToPhotosIcon />
             </IconButton>
-            <Typography variant='h6' color='inherit' noWrap>
+            <Typography variant="h6" color="inherit" noWrap>
               Create a Palette
             </Typography>
           </Toolbar>
           <div className={classes.navBtns}>
-            <Link to='/'>
-              <Button className={classes.button} variant='contained' color='secondary'>Back</Button>
+            <Link to="/">
+              <Button className={classes.button} variant="contained" color="secondary">Back</Button>
             </Link>
-            <Button className={classes.button} variant='contained' color='primary' onClick={this.handleShowForm}>
+            <Button className={classes.button} variant="contained" color="primary" onClick={this.handleShowForm}>
               Save
             </Button>
           </div>

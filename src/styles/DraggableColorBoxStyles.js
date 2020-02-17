@@ -12,7 +12,7 @@ const styles = {
     marginBottom: '-5px',
     '&:hover svg': {
       color: 'white',
-      transform: 'scale(1.3)'
+      transform: 'scale(1.3)',
     },
     [sizes.down('lg')]: {
       width: '25%',
@@ -33,14 +33,14 @@ const styles = {
     left: '0',
     bottom: '0',
     padding: '10px',
-    color: props => chroma(props.color).luminance() > 0.08 ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)',
+    color: (props) => (chroma(props.color).luminance() > 0.08 ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.8)'),
     letterSpacing: '1px',
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   deleteIcon: {
-    transition: '.3s ease-in'
-  }
+    transition: '.3s ease-in',
+  },
 };
 
 export default styles;

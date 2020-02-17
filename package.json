@@ -8,7 +8,9 @@
     "@material-ui/styles": "^4.9.0",
     "array-move": "^2.1.0",
     "chroma-js": "^2.0.3",
+    "classnames": "^2.2.6",
     "emoji-mart": "^2.11.1",
+    "prop-types": "^15.7.2",
     "rc-slider": "^8.6.13",
     "react": "^16.8.6",
     "react-color": "^2.17.3",
@@ -41,5 +43,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }

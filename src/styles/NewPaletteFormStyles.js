@@ -1,6 +1,6 @@
-import { DRAWER_WIDTH } from '../constants';
+import DRAWER_WIDTH from '../constants';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     display: 'flex',
   },
@@ -11,7 +11,7 @@ const styles = theme => ({
   drawerPaper: {
     width: DRAWER_WIDTH,
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   drawerHeader: {
     display: 'flex',
@@ -44,14 +44,14 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   buttons: {
-    width: '100%'
+    width: '100%',
   },
   button: {
-    width: '50%'
-  }
+    width: '50%',
+  },
 });
 
 export default styles;
