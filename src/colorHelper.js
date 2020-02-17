@@ -44,4 +44,4 @@ const generatePalette = (starterPalette) => {
   return newPalette;
 };
 
-export { generatePalette };
+export default generatePalette;
