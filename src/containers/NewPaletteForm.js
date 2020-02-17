@@ -8,57 +8,60 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
-import DraggableColorList from '../components/DraggableColorList';
 import arrayMove from 'array-move';
-
+import DraggableColorList from '../components/DraggableColorList';
 import PaletteFormNav from './PaletteFormNav';
 import ColorPickerForm from './ColorPickerForm';
 import seedColors from '../seed-colors';
-
 import styles from '../styles/NewPaletteFormStyles';
 
 class NewPaletteForm extends React.Component {
-  static defaultProps = {
-    maxColors: 20
-  }
-
   constructor(props) {
     super(props);
 
     this.state = {
       open: true,
       colors: seedColors[0].colors,
-      newPaletteName: ''
-    }
+    };
+
+    this.onSortEnd = this.onSortEnd.bind(this);
+    this.handleDrawerOpen = this.handleDrawerOpen.bind(this);
+    this.handleDrawerClose = this.handleDrawerClose.bind(this);
+    this.handleAddColor = this.handleAddColor.bind(this);
+    this.handleRemoveColor = this.handleRemoveColor.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handlePaletteSubmit = this.handlePaletteSubmit.bind(this);
+    this.handleClearPalette = this.handleClearPalette.bind(this);
+    this.handleAddRandom = this.handleAddRandom.bind(this);
   }
 
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  }
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  }
-
-  handleAddColor = (newColor) => {
-    this.setState({ colors: [...this.state.colors, newColor] });
-  }
-
-  handleRemoveColor = (colorName) => {
-    this.setState({ colors: this.state.colors.filter(color => color.name !== colorName) });
-  }
-
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
-  }
-
-  onSortEnd = ({ oldIndex, newIndex }) => {
+  onSortEnd({ oldIndex, newIndex }) {
     this.setState(({ colors }) => ({
       colors: arrayMove(colors, oldIndex, newIndex),
     }));
   }
 
-  handlePaletteSubmit = (newPalette) => {
+  handleDrawerOpen() {
+    this.setState({ open: true });
+  }
+
+  handleDrawerClose() {
+    this.setState({ open: false });
+  }
+
+  handleAddColor(newColor) {
+    this.setState({ colors: [...this.state.colors, newColor] });
+  }
+
+  handleRemoveColor(colorName) {
+    this.setState({ colors: this.state.colors.filter((color) => color.name !== colorName) });
+  }
+
+  handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handlePaletteSubmit(newPalette) {
     const newName = newPalette.paletteName.toLowerCase();
 
     newPalette.id = newName.replace(/ /g, '-');
@@ -68,20 +71,20 @@ class NewPaletteForm extends React.Component {
     this.props.history.push('/');
   }
 
-  handleClearPalette = () => {
+  handleClearPalette() {
     this.setState({ colors: [] });
   }
 
-  handleAddRandom = () => {
-    const allColors = this.props.palettes.map(palette => palette.colors).flat();
+  handleAddRandom() {
+    const allColors = this.props.palettes.map((palette) => palette.colors).flat();
     let random;
     let randomColor;
     let isDuplicateColor = true;
 
-    while(isDuplicateColor) {
+    while (isDuplicateColor) {
       random = Math.floor(Math.random() * allColors.length);
       randomColor = allColors[random];
-      isDuplicateColor = this.state.colors.some(color => color.name === randomColor.name);
+      isDuplicateColor = this.state.colors.some((color) => color.name === randomColor.name);
     }
 
     this.setState({ colors: [...this.state.colors, randomColor] });
@@ -102,8 +105,8 @@ class NewPaletteForm extends React.Component {
         />
         <Drawer
           className={classes.drawer}
-          variant='persistent'
-          anchor='left'
+          variant="persistent"
+          anchor="left"
           open={open}
           classes={{
             paper: classes.drawerPaper,
@@ -116,20 +119,20 @@ class NewPaletteForm extends React.Component {
           </div>
           <Divider />
           <div className={classes.drawerContainer}>
-            <Typography variant='h4' gutterBottom>Design your palette</Typography>
+            <Typography variant="h4" gutterBottom>Design your palette</Typography>
             <div className={classes.buttons}>
               <Button
                 onClick={this.handleClearPalette}
-                variant='contained'
-                color='secondary'
+                variant="contained"
+                color="secondary"
                 className={classes.button}
               >
                 Clear palette
               </Button>
               <Button
                 onClick={this.handleAddRandom}
-                variant='contained'
-                color='primary'
+                variant="contained"
+                color="primary"
                 className={classes.button}
                 disabled={paletteIsFull}
               >
@@ -152,7 +155,7 @@ class NewPaletteForm extends React.Component {
           <DraggableColorList
             colors={colors}
             removeColor={this.handleRemoveColor}
-            axis='xy'
+            axis="xy"
             onSortEnd={this.onSortEnd}
             distance={20}
           />
@@ -162,9 +165,14 @@ class NewPaletteForm extends React.Component {
   }
 }
 
+NewPaletteForm.defaultProps = {
+  maxColors: 20,
+};
+
 NewPaletteForm.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  classes: PropTypes.shape({}).isRequired,
+  theme: PropTypes.shape({}).isRequired,
+  maxColors: PropTypes.number,
 };
 
 export default withStyles(styles, { withTheme: true })(NewPaletteForm);

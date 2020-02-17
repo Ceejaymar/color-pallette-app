@@ -5,7 +5,7 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    height: '6vh'
+    height: '6vh',
   },
   navLogo: {
     marginRight: '15px',
@@ -18,21 +18,21 @@ export default {
     alignItems: 'center',
     '& a': {
       textDecoration: 'none',
-      color:' black'
+      color: 'black',
     },
     [sizes.down('xs')]: {
-      display: 'none'
-    }
+      display: 'none',
+    },
   },
   navSlider: {
     width: '340px',
     margin: '0px 10px',
     display: 'inline-block',
     '& .rc-slider-rail': {
-      height: '10px'
+      height: '10px',
     },
     '& .rc-slider-track': {
-      backgroundColor: 'transparent'
+      backgroundColor: 'transparent',
     },
     '& .rc-slider-handle, .rc-slider-handle:active,.rc-slider-handle:focus,.rc-slider-handle:hover': {
       backgroundColor: 'mediumseagreen',
@@ -41,17 +41,17 @@ export default {
       boxShadow: 'none',
       height: '15px',
       width: '15px',
-      marginTop: '-2.75px'
+      marginTop: '-2.75px',
     },
     [sizes.down('sm')]: {
-      width: '200px'
+      width: '200px',
     },
     [sizes.down('xs')]: {
-      width: '150px'
+      width: '150px',
     },
   },
   navSelect: {
     marginLeft: 'auto',
-    marginRight: '15px'
-  }
-}
+    marginRight: '15px',
+  },
+};

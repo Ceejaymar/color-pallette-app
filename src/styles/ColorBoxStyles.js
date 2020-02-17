@@ -4,40 +4,40 @@ import sizes from './sizes';
 export default {
   colorBox: {
     width: '20%',
-    height: props => props.showFullPalette ? '25%' : '50%',
+    height: (props) => (props.showFullPalette ? '25%' : '50%'),
     margin: '0 auto',
     display: 'inline-block',
     position: 'relative',
     cursor: 'pointer',
     marginBottom: '-3.5px',
     '&:hover button': {
-      opacity: '1'
+      opacity: '1',
     },
     [sizes.down('lg')]: {
       width: '25%',
-      height: props => props.showFullPalette ? '20%' : '33.5%',
+      height: (props) => (props.showFullPalette ? '20%' : '33.5%'),
     },
     [sizes.down('md')]: {
       width: '33.33%',
-      height: props => props.showFullPalette ? '14.3%' : '27%',
+      height: (props) => (props.showFullPalette ? '14.3%' : '27%'),
     },
     [sizes.down('sm')]: {
       width: '50%',
-      height: props => props.showFullPalette ? '10.05%' : '20%',
+      height: (props) => (props.showFullPalette ? '10.05%' : '20%'),
     },
     [sizes.down('xs')]: {
       width: '100%',
-      height: props => props.showFullPalette ? '5.05%' : '10%',
+      height: (props) => (props.showFullPalette ? '5.05%' : '10%'),
     },
   },
   copyText: {
-    color: props => chroma(props.background).luminance() > 0.08 ? 'black' : 'white'
+    color: (props) => (chroma(props.background).luminance() > 0.08 ? 'black' : 'white'),
   },
   colorName: {
-    color: props => chroma(props.background).luminance() > 0.08 ? 'black' : 'white'
+    color: (props) => (chroma(props.background).luminance() > 0.08 ? 'black' : 'white'),
   },
   seeMore: {
-    color: props => chroma(props.background).luminance() > 0.08 ? 'rgba(0, 0, 0, 0.8)' : 'white',
+    color: (props) => (chroma(props.background).luminance() > 0.08 ? 'rgba(0, 0, 0, 0.8)' : 'white'),
     backgroundColor: 'rgba(255, 255, 255, .3)',
     position: 'absolute',
     bottom: '0',
@@ -46,10 +46,10 @@ export default {
     width: '100px',
     textAlign: 'center',
     lineHeight: '30px',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
   },
   copyButton: {
-    color: props => chroma(props.background).luminance() > 0.08 ? 'rgba(0, 0, 0, 0.8)' : 'white',
+    color: (props) => (chroma(props.background).luminance() > 0.08 ? 'rgba(0, 0, 0, 0.8)' : 'white'),
     width: '100px',
     height: '30px',
     display: 'inline-block',
@@ -66,7 +66,7 @@ export default {
     textTransform: 'uppercase',
     textDecoration: 'none',
     border: 'none',
-    opacity: '0'
+    opacity: '0',
   },
   boxContent: {
     boxSizing: 'border-box',
@@ -76,7 +76,7 @@ export default {
     bottom: '0',
     padding: '0 0 10px 10px',
     color: 'black',
-    letterSpacing: '1px'
+    letterSpacing: '1px',
   },
   copyOverlay: {
     opacity: '0',
@@ -84,13 +84,13 @@ export default {
     zIndex: '0',
     width: '100%',
     height: '100%',
-    transition: 'transform .6s ease-in-out'
+    transition: 'transform .6s ease-in-out',
   },
   showOverlay: {
     opacity: '1',
     transform: 'scale(50)',
     zIndex: '10',
-    position: 'absolute'
+    position: 'absolute',
   },
   copyMessage: {
     position: 'fixed',
@@ -117,19 +117,19 @@ export default {
       padding: '1rem',
       textTransform: 'uppercase',
       [sizes.down('xs')]: {
-        fontSize: '5rem'
-      }
+        fontSize: '5rem',
+      },
     },
     '& p': {
       fontSize: '2rem',
-      fontWeight: '300'
-    }
+      fontWeight: '300',
+    },
   },
   showMessage: {
     transform: 'scale(1)',
     opacity: '1',
     zIndex: '20',
     transition: 'all .2s ease-in-out',
-    transitionDelay: '.1s'
-  }
-}
+    transitionDelay: '.1s',
+  },
+};

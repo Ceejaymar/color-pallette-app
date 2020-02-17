@@ -1,9 +1,9 @@
-import { DRAWER_WIDTH } from '../constants';
+import DRAWER_WIDTH from '../constants';
 import sizes from './sizes';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
   appBar: {
     transition: theme.transitions.create(['margin', 'width'], {
@@ -13,7 +13,7 @@ const styles = theme => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: '64px'
+    height: '64px',
   },
   appBarShift: {
     width: `calc(100% - ${DRAWER_WIDTH}px)`,
@@ -33,20 +33,19 @@ const styles = theme => ({
   navBtns: {
     marginRight: '1rem',
     '& a': {
-      textDecoration: 'none'
+      textDecoration: 'none',
     },
     [sizes.down('xs')]: {
-      marginRight: '0.3rem'
+      marginRight: '0.3rem',
     },
   },
   button: {
     margin: '0 0.5rem',
     [sizes.down('xs')]: {
       margin: '0 0.2rem',
-      padding: '0.2rem'
+      padding: '0.2rem',
     },
   },
-
 });
 
 export default styles;

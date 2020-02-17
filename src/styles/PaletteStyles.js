@@ -4,10 +4,10 @@ export default {
   main: {
     height: '98vh',
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   paletteColors: {
-    height: '90%'
+    height: '90%',
   },
   goBack: {
     width: '20%',
@@ -38,23 +38,23 @@ export default {
       color: 'white',
       textTransform: 'uppercase',
       textDecoration: 'none',
-      border: 'none'
+      border: 'none',
     },
     [sizes.down('lg')]: {
       width: '75%',
-      height: '33.5%'
+      height: '33.5%',
     },
     [sizes.down('md')]: {
       width: '100%',
-      height: '20%'
+      height: '20%',
     },
     [sizes.down('sm')]: {
       width: '50%',
-      height: '20%'
+      height: '20%',
     },
     [sizes.down('xs')]: {
       width: '100%',
-      height: '10%'
-    }
-  }
-}
+      height: '10%',
+    },
+  },
+};
