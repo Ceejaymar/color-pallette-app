@@ -20,7 +20,7 @@ class PaletteMetaForm extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleStateChange = this.handleStateChange.bind(this);
+    this.handleStageChange = this.handleStageChange.bind(this);
     this.handleSavePalette = this.handleSavePalette.bind(this);
   }
 
