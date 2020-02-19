@@ -21,11 +21,11 @@ class Navbar extends Component {
     };
 
     this.handleFormatChange = this.handleFormatChange.bind(this);
-    this.handleButton = this.handleButton.bind;
+    this.handleButton = this.handleButton.bind(this);
   }
 
   async handleFormatChange(e) {
-    this.setState({ format: e.target.value, isOpen: true });
+    await this.setState({ format: e.target.value, isOpen: true });
     await this.props.handleFormatChange(this.state.format);
   }
 
